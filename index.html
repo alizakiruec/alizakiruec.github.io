@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10213b">
+  <meta name="description" content="Ali Zakir is a JSPS Postdoctoral Fellow at Sony CSL, Tokyo, working on computer vision, human pose and motion, and multimodal behavior analysis.">
+  <title>Ali Zakir — Computer Vision &amp; Human Behavior</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <style>/* Core palette and type. Change these tokens to retheme the entire page. */
+:root{--paper:#fff;--wash:#f4f7fc;--ink:#10213b;--secondary:#45536b;--muted:#647189;--blue:#285be8;--line:#dce3ee;--sans:'DM Sans',Arial,sans-serif;--serif:'Source Serif 4',Georgia,serif;--mono:'IBM Plex Mono',Consolas,monospace;--ease:cubic-bezier(.2,.7,.2,1)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:110px;font-size:16px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.7;-webkit-font-smoothing:antialiased}
+body.is-locked{overflow:hidden}
+button,input{font:inherit}
+button,a,input{-webkit-tap-highlight-color:transparent}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #7394f4;outline-offset:5px}
+button:disabled{cursor:default}
+::selection{background:#dbe5ff;color:var(--ink)}
+[hidden]{display:none!important}
+.container{width:min(1220px,calc(100% - 112px));margin-inline:auto}
+.mono,.eyebrow{font-family:var(--mono)}
+.eyebrow{color:var(--blue);font-size:.8125rem;font-weight:500;letter-spacing:.1em;line-height:1.6;margin:0 0 24px}
+h1,h2,h3,p{margin-top:0}
+h1,h2{font-family:var(--serif);font-weight:400;letter-spacing:-.045em}
+h2{font-size:clamp(2.5rem,4.3vw,3.75rem);line-height:1.15;margin-bottom:0}
+h1 em,h2 em{color:var(--blue);font-weight:400}
+.wordmark{font-family:var(--mono);font-size:2rem;letter-spacing:-.12em;line-height:1;font-weight:500}
+.wordmark>span{color:var(--blue)}
+.text-link{font-size:.9375rem;font-weight:600;display:inline-flex;align-items:center;gap:16px;position:relative;padding:9px 0;white-space:normal}
+.text-link::after{content:'';position:absolute;bottom:4px;left:0;width:100%;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+.text-link:hover::after{transform:scaleX(1)}
+.text-link>span{font-size:1.125rem;transition:transform .3s var(--ease)}
+.text-link:hover>span{transform:translate(3px,-3px)}
+.skip-link{position:fixed;z-index:120;left:20px;top:-100px;padding:12px 20px;background:var(--ink);color:#fff}
+.skip-link:focus{top:12px}
+
+/* Navigation stays quiet while the content takes the lead. */
+.site-header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.header-inner{min-height:88px;display:flex;align-items:center;justify-content:space-between;gap:32px}
+.brand{display:inline-flex;align-items:center;gap:18px}
+.brand-name{font-size:1rem;font-weight:600;letter-spacing:-.02em}
+.main-navigation{display:flex;align-items:center;gap:30px}
+.main-navigation>a{font-size:.875rem;transition:color .2s ease;position:relative;padding-block:10px}
+.main-navigation>a:hover,.main-navigation>a.active{color:var(--blue)}
+.main-navigation>a:not(.nav-contact)::after{content:'';position:absolute;height:2px;bottom:3px;left:0;width:100%;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+.main-navigation>a.active::after,.main-navigation>a:hover::after{transform:scaleX(1)}
+.main-navigation .nav-contact{display:inline-flex;align-items:center;gap:25px;border-left:1px solid var(--line);padding-left:30px;font-weight:600}
+.nav-contact span{font-size:1.25rem}
+.reading-progress{height:2px;position:absolute;bottom:-1px;width:100%;overflow:hidden}
+.reading-progress span{display:block;width:100%;height:100%;background:var(--blue);transform:scaleX(0);transform-origin:left;will-change:transform}
+.menu-button{display:none}
+
+/* Introduction and an actual, readable Python dictionary. */
+.hero{padding-block:92px 80px;display:grid;grid-template-columns:1.18fr 1fr;column-gap:65px;align-items:center;position:relative}
+.hero-copy{min-width:0}
+.hero-intro{margin-bottom:24px;font-size:.75rem}
+.eyebrow-divider{padding-inline:10px;color:#a1aec1}
+h1{font-size:clamp(3.2rem,5.45vw,5.35rem);line-height:1.08;margin-bottom:28px}
+.hero-description{font-size:1.0625rem;color:var(--secondary);max-width:44ch;line-height:1.8;margin-bottom:31px}
+.hero-actions{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.button{display:inline-flex;justify-content:center;align-items:center;gap:30px;padding:14px 23px;font-size:.9375rem;font-weight:500;line-height:1.5;border-radius:4px;transition:background .25s ease,box-shadow .25s ease,transform .25s var(--ease)}
+.primary-button{background:var(--blue);color:#fff;border:1px solid var(--blue)}
+.primary-button:hover{background:#1746c7;transform:translateY(-3px);box-shadow:0 10px 24px #285be826}
+.primary-button>span{font-size:1.25rem;line-height:1}
+.hero-affiliation{display:flex;align-items:center;gap:15px;margin-top:39px}
+.affiliation-rule{width:2px;height:38px;background:var(--line);flex-shrink:0}
+.hero-affiliation strong,.hero-affiliation div>span{display:block;font-size:.875rem}
+.hero-affiliation strong{font-weight:600;line-height:1.7}
+.hero-affiliation div>span{color:var(--muted);font-size:.8125rem}
+.hero-aside{padding:26px 0 26px 7px;min-width:0}
+.code-card{background:#10213b;color:#dce4f3;border:1px solid #283a55;border-radius:10px;box-shadow:0 22px 65px -23px #18396755;transform:rotate(1.5deg);transition:transform .6s var(--ease),box-shadow .6s var(--ease);overflow:hidden;position:relative}
+.code-card:hover{transform:rotate(0) translateY(-5px);box-shadow:0 27px 70px -20px #18396766}
+.code-toolbar{padding:16px 20px;border-bottom:1px solid #ffffff14;display:flex;align-items:center;justify-content:space-between;gap:15px;font: .8125rem var(--mono);color:#aebdd5;background:#ffffff04}
+.window-dots{display:flex;gap:6px}
+.window-dots i{width:7px;height:7px;border-radius:50%;background:#74869f;opacity:.8}
+.window-dots i:nth-child(2){opacity:.5}.window-dots i:nth-child(3){opacity:.3}
+.code-language{font-size:.75rem;opacity:.7}
+.code-body{padding:25px 0 28px;overflow:auto;scrollbar-width:thin}
+.code-line{display:flex;white-space:nowrap;padding:1px 23px 1px 18px;line-height:1.9;transition:background .2s ease}
+.code-line:hover{background:#ffffff08}
+.code-line code{font-family:var(--mono);font-size:.8125rem;line-height:inherit}
+.line-number{font-family:var(--mono);font-size:.75rem;flex:0 0 30px;color:#6c7f9b;user-select:none;line-height:2.06}
+.comment{color:#93a4be}.key{color:#8fb6ff}.string{color:#c5dba3}
+.code-caret{display:inline-block;height:13px;width:6px;background:#8fb6ff;margin-left:4px;vertical-align:-2px;animation:caret 1.05s step-end 5}
+.code-footer{font-family:var(--mono);font-size:.75rem;border-top:1px solid #ffffff14;display:flex;gap:12px;justify-content:space-between;padding:12px 19px;color:#a8bad5}
+.margin-note{margin:28px 0 0 37px;color:var(--secondary);font-family:var(--serif);font-style:italic;font-size:1.1875rem;line-height:1.65;transform:rotate(-3deg)}
+.margin-note>span{color:var(--muted)}
+.scroll-note{grid-column:1/-1;margin-top:55px;font-size:.75rem;letter-spacing:.12em;color:var(--muted);display:inline-flex;align-items:center;gap:12px;justify-self:start}
+.scroll-stem{height:22px;width:1px;background:var(--blue);position:relative}
+.scroll-stem::after{content:'';width:5px;height:5px;position:absolute;bottom:0;left:-2px;transform:rotate(45deg);border-right:1px solid var(--blue);border-bottom:1px solid var(--blue)}
+.discipline-strip{border-block:1px solid var(--line);background:var(--wash)}
+.discipline-strip .container{display:flex;justify-content:space-between;gap:20px;padding-block:24px;align-items:center}
+.discipline-strip span{font-size:.875rem;color:var(--secondary)}
+.discipline-strip i{font-family:var(--mono);color:#9caccc;font-size:1rem;font-style:normal}
+
+/* Open research grid: type, borders, and carefully spaced content. */
+.section{padding-block:102px}
+.section-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:70px;margin-bottom:54px}
+.section-heading>div{flex:1;min-width:0}
+.section-heading>p{flex:0 1 360px;font-size:1rem;line-height:1.8;color:var(--secondary);margin:0 0 6px}
+.section-heading>.text-link{margin-bottom:8px}
+.section-aside{font-size:.8125rem;color:var(--muted);padding-bottom:10px;letter-spacing:.05em}
+.research-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
+.research-card{padding:34px 30px 33px 0;position:relative;border-bottom:1px solid var(--line);transition:background .3s ease}
+.research-card:not(:nth-child(3n+1)){border-left:1px solid var(--line);padding-left:30px}
+.research-card:nth-child(3n){padding-right:0}
+.research-card::before{content:'';height:2px;background:var(--blue);position:absolute;top:-1px;left:0;right:0;transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+.research-card:hover::before{transform:scaleX(1)}
+.research-card:hover{background:linear-gradient(180deg,#f2f6ff88,transparent 85%)}
+.research-card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:27px;color:var(--blue)}
+.research-card-top>span{font-family:var(--mono);font-size:.75rem;color:var(--muted)}
+.research-icon{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.research-card h3{font-size:1.125rem;font-weight:550;line-height:1.5;letter-spacing:-.02em;margin-bottom:12px;max-width:23ch}
+.research-card p{font-size:1rem;line-height:1.8;color:var(--secondary);margin-bottom:0}
+
+/* The complete bibliography; filters never change the underlying content. */
+.publications-section{background:var(--wash);border-block:1px solid var(--line)}
+.publications-section .section-heading{margin-bottom:44px}
+.publication-controls{display:flex;gap:20px;align-items:center;justify-content:space-between;padding-bottom:25px;border-bottom:1px solid #cbd6e6}
+.pub-filters{display:flex;gap:6px;flex-wrap:wrap}
+.filter-btn{border:1px solid transparent;background:transparent;font-size:.875rem;font-weight:500;padding:9px 17px;border-radius:4px;color:var(--secondary);transition:color .2s,background .2s,border-color .2s;min-height:44px}
+.filter-btn:hover{border-color:var(--line);background:#fff8;color:var(--ink)}
+.filter-btn.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.publication-count{font-size:.75rem;color:var(--muted);white-space:nowrap}
+.pub-entry{display:grid;grid-template-columns:84px minmax(0,1fr);gap:23px;padding:27px 14px 29px 0;border-bottom:1px solid var(--line);transition:background .25s ease}
+.pub-entry:hover{background:#fff9}
+.pub-yr{font-family:var(--mono);font-size:.875rem;color:var(--muted);padding-top:4px}
+.pub-title{font-size:1.125rem;line-height:1.55;font-weight:550;letter-spacing:-.013em;margin:0 0 9px;max-width:82ch}
+.pub-meta{font-size:.875rem;line-height:1.85;color:var(--secondary);margin-bottom:9px}
+.pub-meta .venue{color:var(--ink)}
+.pub-tags{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.pub-tag{font-family:var(--mono);font-size:.75rem;padding:3px 8px;line-height:1.5;display:inline-block;border-radius:3px;background:#e3eaff;color:#345aa8}
+.tag-c{background:#e5e9f1;color:#50607a}.tag-r{background:#ebe6f5;color:#6d538c}.tag-a{background:#f5edcf;color:#735a17}
+
+/* Biography and milestones. */
+.about-body{display:grid;grid-template-columns:1.2fr 1fr;gap:85px}
+.about-text p{font-size:1rem;line-height:1.95;color:var(--secondary);margin-bottom:22px}
+.about-text p:first-child{font-family:var(--serif);font-size:1.3rem;line-height:1.8;color:var(--ink)}
+.fact-block{border-top:1px solid var(--line);padding-top:21px;margin-bottom:28px}
+.fact-block h3{font-size:.8125rem;font-family:var(--mono);font-weight:500;color:var(--blue);margin:0 0 15px;text-transform:uppercase;letter-spacing:.07em}
+.fact-block ul{list-style:none;padding:0;margin:0}
+.fact-block li{font-size:.9375rem;line-height:1.8;color:var(--secondary);position:relative;padding-left:15px;margin-bottom:9px}
+.fact-block li::before{content:'';position:absolute;left:0;top:12px;width:4px;height:4px;background:#889dbc}
+.about-links{display:flex;gap:34px;margin-top:20px}
+.news-section{border-top:1px solid var(--line);background:#fafbfe}
+.news-layout{display:grid;grid-template-columns:.75fr 1.5fr;gap:75px}
+.news-item{display:grid;grid-template-columns:95px minmax(0,1fr);gap:24px;border-top:1px solid var(--line);padding:23px 0}
+.news-item:last-child{border-bottom:1px solid var(--line)}
+.news-date{font-family:var(--mono);font-size:.8125rem;color:var(--muted);padding-top:3px}
+.news-text{font-size:1rem;color:var(--secondary);line-height:1.8}
+.news-text strong{color:var(--ink);font-weight:550}
+
+/* A bold closing section, kept useful and direct. */
+.contact-section{background:var(--ink);color:#fff;padding-top:97px}
+.contact-main{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center;padding-bottom:90px}
+.contact-section .eyebrow{color:#95b4ff}
+.contact-section h2{font-size:clamp(2.8rem,4.8vw,4.4rem);line-height:1.13}
+.contact-section h2 em{color:#a2beff}
+.contact-copy{padding-top:24px;min-width:0}
+.contact-copy>p:first-child{font-size:1.0625rem;line-height:1.8;max-width:34ch;color:#bdc9dd;margin-bottom:28px}
+.contact-email{display:flex;align-items:center;gap:22px;justify-content:space-between;width:fit-content;border-bottom:1px solid #7186a8;padding-bottom:9px;font-size:clamp(1.15rem,2.15vw,1.8rem);letter-spacing:-.035em;transition:border-color .2s,color .2s}
+.contact-email:hover{color:#a2beff;border-color:#a2beff}
+.personal-email{display:block;font-size:.875rem;margin-top:17px;color:#bdc9dd;overflow-wrap:anywhere}
+.personal-email:hover{text-decoration:underline}
+.contact-location{font-size:.75rem;color:#9aacca;letter-spacing:.07em;margin-top:38px;margin-bottom:0}
+.footer{display:flex;align-items:center;justify-content:space-between;gap:26px;border-top:1px solid #ffffff20;min-height:104px;padding-block:26px;color:#aebed6}
+.footer>.brand{color:#fff}.footer .wordmark>span{color:#a2beff}
+.footer>span{font-size:.8125rem}
+.footer>div{display:flex;gap:23px;font-size:.8125rem}
+.footer>div>a:hover{color:#fff}
+
+/* The original password gate, with keyboard access and the same password. */
+.gate{position:fixed;inset:0;background:#f4f7fc;z-index:100;overflow:auto;display:flex;flex-direction:column;padding:32px 50px;background-image:linear-gradient(90deg,#b7c8e41a 1px,transparent 1px);background-size:80px 100%}
+.gate-top,.gate-bottom{display:flex;align-items:center;justify-content:space-between;gap:25px;color:var(--secondary);flex-shrink:0}
+.gate-top>.mono{font-size:.75rem;letter-spacing:.09em}
+.gate-content{width:min(420px,100%);margin:auto;padding-block:54px}
+.gate-content>.eyebrow{font-size:.8125rem;margin-bottom:23px}
+.gate h2{font-size:clamp(2.8rem,5vw,4rem);margin:0 0 25px}
+.gate-content>p{font-size:1rem;color:var(--secondary);margin-bottom:28px}
+.gate label{font-size:.875rem;display:block;margin-bottom:8px;font-weight:500}
+.password-control{display:flex;gap:8px}
+.password-control input{padding:13px 16px;border:1px solid #bfcee4;background:#fff;border-radius:4px;min-width:0;flex:1;color:var(--ink);font-size:1rem}
+.password-control input:focus{border-color:var(--blue);outline-offset:2px}
+.password-control button{width:56px;min-height:53px;flex:0 0 56px;border:0;background:var(--blue);color:#fff;border-radius:4px;font-size:1.5rem;transition:background .2s}
+.password-control button:hover{background:#1746c7}
+#pw-error{font-size:.875rem;color:#a52e3a;margin:10px 0 0}
+.gate-foot{margin-top:32px;border-top:1px solid var(--line);padding-top:23px;color:var(--muted);font-size:.8125rem}
+.gate-bottom{font-size:.8125rem;padding-top:30px}
+
+/* Animations are short and stop entirely for reduced-motion preferences. */
+@keyframes caret{50%{opacity:0}}
+@keyframes enter{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+body:not(.is-locked) .hero-copy{animation:enter .75s var(--ease) both}
+body:not(.is-locked) .hero-aside{animation:enter .9s .12s var(--ease) both}
+.reveal{opacity:1;transform:none}
+.reveal.is-pending{opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.is-visible{opacity:1;transform:none}
+
+@media(min-width:1600px){.hero{padding-top:112px;padding-bottom:85px;column-gap:82px}}
+@media(max-width:1100px){.container{width:calc(100% - 72px)}.hero{column-gap:34px;grid-template-columns:1.14fr 1fr;padding-top:70px}.main-navigation{gap:20px}.main-navigation .nav-contact{padding-left:20px;gap:12px}.brand{gap:12px}.code-line{padding-right:16px;padding-left:12px}.code-line code{font-size:.75rem}.line-number{flex-basis:25px}.hero-actions{gap:18px}.hero-actions .text-link{font-size:.875rem}.button{gap:15px;padding:13px 18px}.section-heading{gap:40px}.research-card{padding-right:22px}.research-card:not(:nth-child(3n+1)){padding-left:22px}.about-body{gap:50px}.contact-main{gap:50px}.news-layout{gap:40px}}
+@media(max-width:860px){.container{width:calc(100% - 48px)}.header-inner{min-height:76px}.brand-name{font-size:.9375rem}.main-navigation{gap:17px}.main-navigation>a{font-size:.8125rem}.main-navigation .nav-contact{padding-left:17px}.hero{grid-template-columns:1fr;max-width:700px;padding-top:65px;padding-bottom:49px}.hero h1{font-size:clamp(3.8rem,9vw,5.4rem)}.hero-description{max-width:47ch}.hero-aside{max-width:500px;width:100%;justify-self:center;padding:0;margin-top:60px}.code-line code{font-size:.875rem}.line-number{flex-basis:35px}.code-line{padding-inline:24px}.scroll-note{margin-top:42px}.hero-affiliation{margin-top:32px}.discipline-strip .container{gap:14px;flex-wrap:wrap;justify-content:center;padding-block:19px}.discipline-strip span{font-size:.8125rem}.research-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.research-card,.research-card:nth-child(3n){padding:29px 23px 29px 0}.research-card:not(:nth-child(3n+1)){border-left:0;padding-left:0}.research-card:nth-child(2n){border-left:1px solid var(--line);padding-left:23px;padding-right:0}.section{padding-block:77px}.section-heading{gap:30px;align-items:flex-start}.section-heading>p{flex-basis:260px;margin-top:45px}.about-body{grid-template-columns:1.1fr 1fr;gap:35px}.about-text p:first-child{font-size:1.1875rem}.news-layout{grid-template-columns:.7fr 1.3fr;gap:35px}.news-item{grid-template-columns:1fr;gap:7px}.contact-main{grid-template-columns:1fr 1fr;gap:35px}.footer{flex-wrap:wrap}.footer>div{width:100%;justify-content:flex-end}.contact-section{padding-top:72px}.contact-main{padding-bottom:65px}.contact-email{letter-spacing:-.02em;gap:10px;font-size:1.125rem}.contact-copy>p:first-child{font-size:1rem}}
+@media(max-width:650px){html{scroll-padding-top:90px}.container{width:calc(100% - 40px)}.header-inner{min-height:72px;gap:20px}.wordmark{font-size:1.9rem}.menu-button{display:flex;align-items:center;gap:12px;background:none;border:1px solid var(--line);border-radius:4px;padding:9px 12px;min-height:42px;font-size:.875rem;color:var(--ink)}.menu-lines{width:15px;height:9px;display:block;border-top:1px solid currentColor;border-bottom:1px solid currentColor;transition:transform .2s ease}.menu-button[aria-expanded=true] .menu-lines{transform:rotate(-45deg)}.main-navigation{display:none;position:absolute;left:0;right:0;top:100%;background:#fff;box-shadow:0 14px 20px #10213b0d;border-bottom:1px solid var(--line);padding:12px 20px 20px;gap:0;flex-direction:column;align-items:stretch}.main-navigation.is-open{display:flex}.main-navigation>a{font-size:1rem;padding:12px 8px}.main-navigation>a:not(.nav-contact)::after{display:none}.main-navigation .nav-contact{border-left:0;border-top:1px solid var(--line);margin-top:8px;padding:15px 8px 5px;justify-content:space-between}.hero{padding-top:47px}.hero-intro{font-size:.75rem;letter-spacing:.05em;margin-bottom:23px}.eyebrow-divider{padding-inline:5px}.hero h1{font-size:clamp(2.65rem,10.4vw,4.4rem);line-height:1.1;letter-spacing:-.05em;margin-bottom:23px}.hero-description{font-size:1rem;line-height:1.8}.hero-actions{gap:17px}.button{padding:13px 17px;font-size:.875rem;min-height:48px}.hero-actions .text-link{font-size:.875rem;gap:7px}.hero-affiliation div>span{font-size:.8125rem}.hero-aside{margin-top:44px;padding-inline:3px}.code-card{transform:rotate(.8deg);border-radius:8px}.code-toolbar{padding:14px 17px}.code-body{padding-block:22px}.code-line{padding-inline:13px}.code-line code{font-size:.75rem}.line-number{font-size:.75rem;flex-basis:25px;line-height:1.9}.code-footer{padding:12px 14px;font-size:.75rem}.margin-note{font-size:1.125rem;margin-top:26px;margin-left:16px}.scroll-note{margin-top:36px;font-size:.75rem}.discipline-strip .container{display:grid;grid-template-columns:1fr 1fr;gap:9px 15px;padding-block:20px}.discipline-strip span{font-size:.8125rem}.discipline-strip i{display:none}.section{padding-block:65px}.section-heading{display:block;margin-bottom:35px}.eyebrow{font-size:.75rem;margin-bottom:18px}.section-heading h2{font-size:2.7rem}.section-heading>p{margin-top:23px;font-size:1rem;max-width:42ch}.section-heading>.text-link{margin-top:18px;margin-bottom:0}.research-grid{grid-template-columns:1fr}.research-card,.research-card:nth-child(3n),.research-card:nth-child(2n){border-left:0;padding:26px 0}.research-card:not(:nth-child(3n+1)){padding-left:0}.research-card-top{margin-bottom:20px}.research-card h3{max-width:none;font-size:1.1875rem;margin-bottom:9px}.research-card p{font-size:1rem}.publication-controls{align-items:flex-start;gap:12px;flex-direction:column;padding-bottom:18px}.pub-filters{gap:4px}.filter-btn{padding:8px 11px;font-size:.8125rem;min-height:44px}.pub-entry{grid-template-columns:1fr;gap:8px;padding:24px 0}.pub-yr{font-size:.8125rem}.pub-title{font-size:1.0625rem;line-height:1.6}.pub-meta{font-size:.875rem}.section-aside{display:block;margin-top:20px;padding-bottom:0}.about-body{grid-template-columns:1fr;gap:23px}.about-text p:first-child{font-size:1.1875rem}.about-links{margin-top:0;gap:25px;flex-wrap:wrap}.about-links .text-link{font-size:.875rem}.news-layout{grid-template-columns:1fr;gap:35px}.news-layout h2{font-size:2.7rem}.news-layout h2 br{display:none}.news-layout h2 em::before{content:' '}.news-item{grid-template-columns:80px minmax(0,1fr);gap:18px;padding-block:22px}.news-date{font-size:.75rem}.contact-section{padding-top:63px}.contact-main{grid-template-columns:1fr;gap:32px;padding-bottom:48px}.contact-section h2{font-size:3.3rem}.contact-copy{padding-top:0}.contact-copy>p:first-child{max-width:38ch;margin-bottom:24px}.contact-email{font-size:1.5rem;gap:25px}.contact-location{margin-top:30px}.footer{gap:25px;padding-block:28px}.footer>div{justify-content:flex-start;gap:22px;flex-wrap:wrap}.footer>span{font-size:.75rem}.gate{padding:25px 22px;background-size:60px 100%}.gate-top>.mono{font-size:.75rem;letter-spacing:.025em}.gate-content{padding-block:50px}.gate-bottom{align-items:flex-start;flex-direction:column;gap:4px;font-size:.75rem}.gate-foot{font-size:.75rem}}
+@media(max-width:360px){.container{width:calc(100% - 32px)}.hero-actions{gap:12px}.hero-actions .button{padding-inline:12px;gap:10px}.hero-intro{font-size:.75rem;letter-spacing:0}.filter-btn{padding-inline:8px}.code-line{padding-inline:9px}.line-number{flex-basis:22px}.contact-email{font-size:1.25rem}.footer>div{gap:16px}.news-item{grid-template-columns:1fr;gap:7px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.reveal.is-pending{opacity:1;transform:none}.code-card,.code-card:hover{transform:none}}
+@media print{.gate,.site-header,.scroll-note,.menu-button,.reading-progress,.hero-actions,.pub-filters{display:none!important}body.is-locked{overflow:visible}#site-content[inert]{display:none}.container{width:100%}.hero{display:block;padding:25px 0}.hero-aside{display:none}.section{padding:30px 0}.contact-section{background:#fff;color:var(--ink);padding-top:30px}.contact-section h2 em{color:var(--blue)}.contact-copy>p:first-child,.contact-location,.personal-email{color:var(--secondary)}.contact-main{padding-bottom:30px}.reveal.is-pending{opacity:1;transform:none}.pub-entry,.research-card,.fact-block{break-inside:avoid}.publications-section{background:#fff}.footer{color:var(--muted)}.footer>.brand{color:var(--ink)}}
+</style>
+</head>
+<body class="is-locked">
+  <div class="gate" id="pw-screen" role="dialog" aria-modal="true" aria-labelledby="gate-title" aria-describedby="gate-description">
+    <div class="gate-top"><span class="wordmark">az<span>.</span></span><span class="mono">RESEARCH PORTFOLIO</span></div>
+    <div class="gate-content">
+      <span class="eyebrow">ALI ZAKIR · PhD</span>
+      <h2 id="gate-title">A closer look<br>at <em>my work.</em></h2>
+      <p id="gate-description">Enter your password to view the portfolio.</p>
+      <form id="password-form">
+        <label for="pw-input">Portfolio password</label>
+        <div class="password-control"><input type="password" id="pw-input" name="password" placeholder="Your password" autocomplete="current-password" required aria-describedby="pw-error"><button type="submit" aria-label="Enter portfolio">↗</button></div>
+        <p id="pw-error" role="alert" hidden>That password didn’t match. Please try again.</p>
+      </form>
+      <div class="gate-foot">Computer vision · Human motion · Multimodal AI</div>
+    </div>
+    <div class="gate-bottom"><span>JSPS Postdoctoral Fellow · Sony CSL</span><span>Tokyo, Japan</span></div>
+  </div>
+
+  <div id="site-content" inert aria-hidden="true">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#profile" aria-label="Ali Zakir, home"><span class="wordmark">az<span>.</span></span><span class="brand-name">Ali Zakir</span></a>
+        <button class="menu-button" id="menu-button" type="button" aria-expanded="false" aria-controls="main-navigation"><span>Menu</span><span class="menu-lines" aria-hidden="true"></span></button>
+        <nav class="main-navigation" id="main-navigation" aria-label="Main navigation">
+          <a href="#research">Research</a><a href="#publications">Publications</a><a href="#about">About</a><a href="#news">News</a><a class="nav-contact" href="#contact">Let’s connect <span aria-hidden="true">↗</span></a>
+        </nav>
+      </div>
+      <div class="reading-progress" aria-hidden="true"><span id="reading-progress"></span></div>
+    </header>
+
+    <main id="main">
+      <section class="hero container" id="profile" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow hero-intro">ALI ZAKIR <span class="eyebrow-divider">/</span> PhD, INFORMATICS</p>
+          <h1 id="hero-title">Understanding<br>people through<br><em>movement.</em></h1>
+          <p class="hero-description">I bring computer vision and physiological signals together to study how people move, interact, and respond to the world.</p>
+          <div class="hero-actions"><a class="button primary-button" href="#research">Explore my research <span aria-hidden="true">↗</span></a><a class="text-link" href="https://scholar.google.com/citations?user=HzQHveIAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar <span aria-hidden="true">↗</span></a></div>
+          <div class="hero-affiliation"><span class="affiliation-rule" aria-hidden="true"></span><div><strong>JSPS Postdoctoral Fellow</strong><span>Sony Computer Science Laboratories, Tokyo</span></div></div>
+        </div>
+        <div class="hero-aside">
+          <div class="code-card">
+            <div class="code-toolbar"><div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div><span>research.py</span><span class="code-language">PY</span></div>
+            <div class="code-body" aria-label="Research interests, presented as Python code">
+              <div class="code-line"><span class="line-number" aria-hidden="true">01</span><code><span class="comment"># A little about my work</span></code></div>
+              <div class="code-line"><span class="line-number" aria-hidden="true">02</span><code>&nbsp;</code></div>
+              <div class="code-line"><span class="line-number" aria-hidden="true">03</span><code>research = {</code></div>
+              <div class="code-line"><span class="line-number" aria-hidden="true">04</span><code>&nbsp; <span class="key">"vision"</span>: [</code></div>
+              <div class="code-line"><span class="line-number" aria-hidden="true">05</span><code>&nbsp; &nbsp; <span class="string">"human pose"</span>,</code></div>
+              <div class="code-line"><span class="line-number" aria-hidden="true">06</span><code>&nbsp; &nbsp; <span class="string">"motion &amp; interaction"</span></code></div>
+              <div class="code-line"><span class="line-number" aria-hidden="true">07</span><code>&nbsp; ],</code></div>
+              <div class="code-line"><span class="line-number" aria-hidden="true">08</span><code>&nbsp; <span class="key">"signals"</span>: [<span class="string">"EDA"</span>, <span class="string">"ECG"</span>],</code></div>
+              <div class="code-line"><span class="line-number" aria-hidden="true">09</span><code>&nbsp; <span class="key">"based_in"</span>: <span class="string">"Tokyo, Japan"</span></code></div>
+              <div class="code-line"><span class="line-number" aria-hidden="true">10</span><code>}</code></div>
+              <div class="code-line"><span class="line-number" aria-hidden="true">11</span><code>&nbsp;</code></div>
+              <div class="code-line"><span class="line-number" aria-hidden="true">12</span><code><span class="comment"># From movement to understanding.</span><span class="code-caret" aria-hidden="true"></span></code></div>
+            </div>
+            <div class="code-footer"><span>Computer vision × Human behavior</span><span aria-hidden="true">{ }</span></div>
+          </div>
+          <p class="margin-note">The body has a lot to tell us.<br><span>I’m interested in listening.</span></p>
+        </div>
+        <a class="scroll-note mono" href="#research"><span class="scroll-stem" aria-hidden="true"></span>SCROLL TO EXPLORE</a>
+      </section>
+
+      <div class="discipline-strip"><div class="container"><span>Computer vision</span><i aria-hidden="true">/</i><span>Human motion</span><i aria-hidden="true">/</i><span>Physiological sensing</span><i aria-hidden="true">/</i><span>Behavioral neuroscience</span></div></div>
+
+      <section id="research" class="section container" aria-labelledby="research-title">
+        <div class="section-heading reveal"><div><p class="eyebrow">01 / RESEARCH</p><h2 id="research-title">Different signals.<br><em>A fuller picture.</em></h2></div><p>From efficient pose estimation to understanding people in groups, I build methods that connect what we can see with what we can measure.</p></div>
+        <div class="research-grid"><article class="research-card reveal"><div class="research-card-top"><svg class="research-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5m6 0h5v5M4 15v5h5m6 0h5v-5"/><circle cx="12" cy="12" r="3"/></svg><span>01</span></div><h3>Human &amp; Hand Pose Estimation</h3><p>Designing efficient, attention-driven architectures for accurate 2D pose estimation under real-world conditions — occlusion, scale variation, and resource constraints.</p></article>
+<article class="research-card reveal"><div class="research-card-top"><svg class="research-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h3l3-7 5 14 3-7h4"/></svg><span>02</span></div><h3>Multimodal Behavior Analysis</h3><p>Fusing video, motion features, and physiological signals (EDA, ECG) to decode emotional and cognitive states — stress, anxiety, attention — that visual data alone cannot reliably identify.</p></article>
+<article class="research-card reveal"><div class="research-card-top"><svg class="research-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="8" cy="6" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="10" cy="18" r="2"/></svg><span>03</span></div><h3>Biosignal &amp; Video Synchronization</h3><p>Developing reproducible pipelines that temporally align wearable sensor streams with multi-camera video for behavioral neuroscience applications.</p></article>
+<article class="research-card reveal"><div class="research-card-top"><svg class="research-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="7" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6.2l8 .6M7 8l4 8m6-7-4 7"/></svg><span>04</span></div><h3>Multi-Person Motion Analysis</h3><p>Tracking and characterizing groups of people in unconstrained environments — extracting spatiotemporal motion features for downstream behavioral modeling.</p></article>
+<article class="research-card reveal"><div class="research-card-top"><svg class="research-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/></svg><span>05</span></div><h3>Biomedical AI</h3><p>Prior work on brain tumor classification, Alzheimer's identification, cancer peptide discrimination, and protein prediction using deep learning and graph-based methods.</p></article>
+<article class="research-card reveal"><div class="research-card-top"><svg class="research-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4m4-8v12m4-15v18m4-15v12m4-8v4"/></svg><span>06</span></div><h3>Automatic Speech Recognition</h3><p>Early research on isolated digit recognition for the Pashto language using MFCC features — a low-resource language with limited prior computational work.</p></article></div>
+      </section>
+
+      <section id="publications" class="publications-section" aria-labelledby="publications-title">
+        <div class="container section">
+          <div class="section-heading reveal"><div><p class="eyebrow">02 / PUBLICATIONS</p><h2 id="publications-title">Ideas, <em>in print.</em></h2></div><a class="text-link" href="https://scholar.google.com/citations?user=HzQHveIAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Full list on Google Scholar <span aria-hidden="true">↗</span></a></div>
+          <div class="publication-controls"><div class="pub-filters" role="group" aria-label="Filter publications"><button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All work</button><button class="filter-btn" type="button" data-filter="journal" aria-pressed="false">Journals</button><button class="filter-btn" type="button" data-filter="conference" aria-pressed="false">Conferences</button><button class="filter-btn" type="button" data-filter="review" aria-pressed="false">Under review</button></div><span class="publication-count mono" id="publication-count" aria-live="polite">21 entries</span></div>
+          <div class="pub-list"><article class="pub-entry" data-type="journal"><div class="pub-yr">2026</div><div class="pub-body"><h3 class="pub-title">FCR-PoseHRNet: Flexible Feature Realignment and Cross-Resolution Coordinate Refinement in PoseHRNet for 2D Human Pose Estimation</h3><div class="pub-meta">Zakir A., Benitez-Garcia G., Takahashi H. · <span class="venue">Lecture Notes in Computer Science</span> · Springer Nature</div><div class="pub-tags"><span class="pub-tag tag-j">Journal</span></div></div></article>
+<article class="pub-entry" data-type="journal"><div class="pub-yr">2025</div><div class="pub-body"><h3 class="pub-title">Attentive Multi-Scale Features with Adaptive Context PoseResNet for Resource-Efficient Human Pose Estimation</h3><div class="pub-meta">Zakir A., Salman S., Benitez-Garcia G., Takahashi H. · <span class="venue">Electronics</span> 14(11), 2107 · MDPI</div><div class="pub-tags"><span class="pub-tag tag-j">Journal</span></div></div></article>
+<article class="pub-entry" data-type="review"><div class="pub-yr">2025</div><div class="pub-body"><h3 class="pub-title">FlexPoseNet: A Scalable and Efficient Model for Human Pose Estimation</h3><div class="pub-meta">Zakir A., Benitez-Garcia G., Takahashi H. · <span class="venue">ACM Transactions on Computer-Human Interaction</span></div><div class="pub-tags"><span class="pub-tag tag-r">Under Review</span></div></div></article>
+<article class="pub-entry" data-type="review"><div class="pub-yr">2025</div><div class="pub-body"><h3 class="pub-title">PoseFocusNet: Adaptive Feature Fusion and Attention-Enhanced High-Resolution Network for 2D HPE</h3><div class="pub-meta">Zakir A., Salman S., Benitez-Garcia G., Takahashi H. · <span class="venue">ACM Transactions on Computer-Human Interaction</span></div><div class="pub-tags"><span class="pub-tag tag-r">Under Review</span></div></div></article>
+<article class="pub-entry" data-type="conference"><div class="pub-yr">2024</div><div class="pub-body"><h3 class="pub-title">EBA-PRNetCC: An Efficient Bridge Attention-Integration PoseResNet for Coordinate Classification in 2D Human Pose Estimation</h3><div class="pub-meta">Zakir A., Salman S., Benitez-Garcia G., Takahashi H. · <span class="venue">VISAPP 2024</span> · SCITEPRESS, 3, 133–144</div><div class="pub-tags"><span class="pub-tag tag-c">Conference</span></div></div></article>
+<article class="pub-entry" data-type="conference"><div class="pub-yr">2024</div><div class="pub-body"><h3 class="pub-title">Attention-Based Multi-Scale, Context-Aware Feature Integration into PoseResNet for Coordinate Classification in 2D HPE</h3><div class="pub-meta">Zakir A., Salman S., Benitez-Garcia G., Takahashi H. · <span class="venue">SoMeT 2024</span>, IPN Cancun · IOS Press / Sage</div><div class="pub-tags"><span class="pub-tag tag-c">Conference</span></div></div></article>
+<article class="pub-entry" data-type="conference"><div class="pub-yr">2024</div><div class="pub-body"><h3 class="pub-title">Deformable Pose Network: A Multi-Stage Deformable Convolutional Network for 2D Hand Pose Estimation</h3><div class="pub-meta">Salman S., Zakir A., Takahashi H. · <span class="venue">VISAPP 2024</span> · SciTePress</div><div class="pub-tags"><span class="pub-tag tag-c">Conference</span></div></div></article>
+<article class="pub-entry" data-type="journal"><div class="pub-yr">2023</div><div class="pub-body"><h3 class="pub-title">SOCA-PRNet: Spatially Oriented Attention-Infused Structured-Feature-Enabled PoseResNet for 2D Human Pose Estimation</h3><div class="pub-meta">Zakir A., Salman S., Takahashi H. · <span class="venue">Sensors</span> 24(1), 110 · MDPI</div><div class="pub-tags"><span class="pub-tag tag-j">Journal</span></div></div></article>
+<article class="pub-entry" data-type="conference"><div class="pub-yr">2023</div><div class="pub-body"><h3 class="pub-title">SAHF-LightPoseResNet: Spatially-Aware Attention-Based Hierarchical Features Enabled Lightweight PoseResNet for 2D Human Pose Estimation</h3><div class="pub-meta">Zakir A., Salman S., Takahashi H. · <span class="venue">PDCAT'23</span> pp. 43–54 · Springer Nature Singapore</div><div class="pub-tags"><span class="pub-tag tag-c">Conference</span><span class="pub-tag tag-a">Best Paper</span></div></div></article>
+<article class="pub-entry" data-type="conference"><div class="pub-yr">2023</div><div class="pub-body"><h3 class="pub-title">AECA-PRNetCC: Adaptive Efficient Channel Attention-based PoseResNet for Coordinate Classification in 2D Human Pose</h3><div class="pub-meta">Zakir A., Salman S., Benitez-Garcia G., Takahashi H. · <span class="venue">IVCNZ 2023</span> pp. 1–6 · IEEE</div><div class="pub-tags"><span class="pub-tag tag-c">Conference</span></div></div></article>
+<article class="pub-entry" data-type="conference"><div class="pub-yr">2023</div><div class="pub-body"><h3 class="pub-title">ACENet: Attention-Driven Contextual Features-Enhanced Lightweight EfficientNet for 2D Hand Pose Estimation</h3><div class="pub-meta">Zakir A., Salman S., Benitez-Garcia G., Takahashi H. · <span class="venue">IVCNZ 2023</span> pp. 1–6 · IEEE</div><div class="pub-tags"><span class="pub-tag tag-c">Conference</span></div></div></article>
+<article class="pub-entry" data-type="journal"><div class="pub-yr">2023</div><div class="pub-body"><h3 class="pub-title">IGPred-HDnet: Prediction of Immunoglobulin Proteins Using Graphical Features and Hierarchal Deep Learning</h3><div class="pub-meta">Ali Z., Alturise F., Alkhalifah T., Khan Y.D. · <span class="venue">Computational Intelligence and Neuroscience</span></div><div class="pub-tags"><span class="pub-tag tag-j">Journal</span></div></div></article>
+<article class="pub-entry" data-type="journal"><div class="pub-yr">2023</div><div class="pub-body"><h3 class="pub-title">SDFPoseGraphNet: Spatial Deep Feature Pose Graph Network for 2D Hand Pose Estimation</h3><div class="pub-meta">Salman S.A., Zakir A., Takahashi H. · <span class="venue">Sensors</span></div><div class="pub-tags"><span class="pub-tag tag-j">Journal</span></div></div></article>
+<article class="pub-entry" data-type="conference"><div class="pub-yr">2023</div><div class="pub-body"><h3 class="pub-title">Cascaded Deep Graphical Convolutional Neural Network for 2D Hand Pose Estimation</h3><div class="pub-meta">Salman S.A., Zakir A., Takahashi H. · <span class="venue">IWAIT 2023</span> Vol. 12592, pp. 227–232 · SPIE</div><div class="pub-tags"><span class="pub-tag tag-c">Conference</span></div></div></article>
+<article class="pub-entry" data-type="journal"><div class="pub-yr">2020</div><div class="pub-body"><h3 class="pub-title">Multi Scale-Adaptive Super-Resolution Person Re-Identification Using GAN</h3><div class="pub-meta">Adil M., Mamoon S., Zakir A., et al. · <span class="venue">IEEE Access</span> 8, 177351–177362</div><div class="pub-tags"><span class="pub-tag tag-j">Journal</span></div></div></article>
+<article class="pub-entry" data-type="journal"><div class="pub-yr">2020</div><div class="pub-body"><h3 class="pub-title">SPSSNet: A Real-Time Network for Image Semantic Segmentation</h3><div class="pub-meta">Mamoon S., Manzoor M.A., Zhang F.E., Ali Z., Lu J.F. · <span class="venue">Frontiers of Information Technology &amp; Electronic Engineering</span> 21(12), 1770–1782</div><div class="pub-tags"><span class="pub-tag tag-j">Journal</span></div></div></article>
+<article class="pub-entry" data-type="journal"><div class="pub-yr">2020</div><div class="pub-body"><h3 class="pub-title">Lexical Variation and Sentiment Analysis of Roman Urdu Sentences with Deep Neural Networks</h3><div class="pub-meta">Manzoor M.A., Mamoon S., Tao S.K., Zakir A., et al. · <span class="venue">IJACSA</span> Vol. 11, No. 2</div><div class="pub-tags"><span class="pub-tag tag-j">Journal</span></div></div></article>
+<article class="pub-entry" data-type="journal"><div class="pub-yr">2019</div><div class="pub-body"><h3 class="pub-title">Content-Based Brain Tumor Retrieval for MR Images Using Transfer Learning</h3><div class="pub-meta">Swati Z.N.K., Zhao Q., Kabir M., Ali F., Ali Z., et al. · <span class="venue">IEEE Access</span> 7, 17809–17822</div><div class="pub-tags"><span class="pub-tag tag-j">Journal</span></div></div></article>
+<article class="pub-entry" data-type="journal"><div class="pub-yr">2019</div><div class="pub-body"><h3 class="pub-title">Brain Tumor Classification for MR Images Using Transfer Learning and Fine-Tuning</h3><div class="pub-meta">Swati Z.N.K., Ali Z., Zhao Q., et al. · <span class="venue">Computerized Medical Imaging and Graphics</span> 75, 34–46</div><div class="pub-tags"><span class="pub-tag tag-j">Journal</span></div></div></article>
+<article class="pub-entry" data-type="journal"><div class="pub-yr">2019</div><div class="pub-body"><h3 class="pub-title">Top-Down Saliency Detection Based on Deep-Learned Features</h3><div class="pub-meta">Zhang D., Zakir A. · <span class="venue">International Journal of Computational Intelligence and Applications</span> 18(02), 1950009</div><div class="pub-tags"><span class="pub-tag tag-j">Journal</span></div></div></article>
+<article class="pub-entry" data-type="journal"><div class="pub-yr">2015</div><div class="pub-body"><h3 class="pub-title">Database Development and Automatic Speech Recognition of Isolated Pashto Spoken Digits Using MFCC and K-NN</h3><div class="pub-meta">Ali Z., Abbas A.W., Thasleema T.M., et al. · <span class="venue">International Journal of Speech Technology</span> 18(2), 271–275 · Springer</div><div class="pub-tags"><span class="pub-tag tag-j">Journal</span></div></div></article></div>
+        </div>
+      </section>
+
+      <section id="about" class="section container" aria-labelledby="about-title">
+        <div class="section-heading reveal"><div><p class="eyebrow">03 / ABOUT</p><h2 id="about-title">The person<br><em>behind the research.</em></h2></div><span class="section-aside mono">PESHAWAR → TOKYO</span></div>
+        <div class="about-body"><div class="about-text">
+        <p>
+          I grew up in Peshawar, Pakistan — a region with rich languages and limited computational resources. My 
+          early research on Pashto speech recognition came directly from that context: a language spoken by 
+          tens of millions of people with almost no digital infrastructure. That instinct — to work on problems 
+          that matter to communities that are underserved by mainstream AI research — has stayed with me.
+        </p>
+        <p>
+          My PhD at the University of Electro-Communications in Tokyo focused on making pose estimation 
+          smarter and lighter — more attention-aware, more efficient, and better at handling the messy 
+          real-world conditions that benchmarks don't capture. As a JSPS Fellow at Sony CSL, that work has 
+          expanded outward: from single-body pose to groups of people, from vision alone to vision plus 
+          physiological signals, from static benchmarks to live behavioral data.
+        </p>
+        <p>
+          Outside research, I am a reviewer for the International Journal of Speech Technology.
+        </p>
+      </div>
+
+      <div class="about-facts">
+        <div class="fact-block">
+          <h3>Education</h3>
+          <ul>
+            <li>PhD Informatics — UEC Tokyo (2025)</li>
+            <li>MS Information Technology — Univ. of Agricultural Peshawar, 1st rank</li>
+            <li>BS Information Technology — Univ. of Agricultural Peshawar</li>
+          </ul>
+        </div>
+        <div class="fact-block">
+          <h3>Fellowships &amp; Awards</h3>
+          <ul>
+            <li>JSPS Postdoctoral Fellowship (2025–)</li>
+            <li>MEXT Scholarship, Japanese Government</li>
+            <li>Best Paper — Korea Information Processing Society, PDCAT'23</li>
+            <li>Departmental Gold Medal — MS, AUP</li>
+            <li>Prime Minister of Pakistan Merit Award</li>
+          </ul>
+        </div>
+        <div class="fact-block">
+          <h3>Languages</h3>
+          <ul>
+            <li>Pashto — native</li>
+            <li>English — proficient (C2)</li>
+          </ul>
+        </div>
+      </div></div>
+        <div class="about-links"><a class="text-link" href="https://alizakiruec.github.io/ali-zakir-cv.pdf" target="_blank" rel="noopener noreferrer">Download CV <span aria-hidden="true">↓</span></a><a class="text-link" href="https://github.com/alizakiruec" target="_blank" rel="noopener noreferrer">Find me on GitHub <span aria-hidden="true">↗</span></a></div>
+      </section>
+
+      <section id="news" class="news-section" aria-labelledby="news-title"><div class="container news-layout section"><div class="reveal"><p class="eyebrow">04 / NEWS</p><h2 id="news-title">Along<br><em>the way.</em></h2></div><div class="news-list"><div class="news-item reveal"><div class="news-date">2026</div><div class="news-text"><strong>New paper accepted</strong> — FCR-PoseHRNet published in Springer Lecture Notes in Computer Science.</div></div>
+<div class="news-item reveal"><div class="news-date">Oct 2025</div><div class="news-text"><strong>JSPS Fellowship awarded</strong> — Began postdoctoral research at Sony Computer Science Laboratories, Tokyo.</div></div>
+<div class="news-item reveal"><div class="news-date">Sep 2025</div><div class="news-text"><strong>PhD completed</strong> — Graduated from the University of Electro-Communications, Tokyo.</div></div>
+<div class="news-item reveal"><div class="news-date">Aug 2023</div><div class="news-text"><strong>Best Paper Award</strong> — Received from the Korea Information Processing Society at PDCAT'23.</div></div></div></div></section>
+
+      <section id="contact" class="contact-section" aria-labelledby="contact-title"><div class="container">
+        <div class="contact-main reveal"><div><p class="eyebrow">05 / CONTACT</p><h2 id="contact-title">Good research<br>starts with a<br><em>conversation.</em></h2></div><div class="contact-copy"><p>I’m open to research collaborations, postdoctoral opportunities, and invited talks.</p><a class="contact-email" href="mailto:Ali.Zakir@sony.com">Ali.Zakir@sony.com <span aria-hidden="true">↗</span></a><a class="personal-email" href="mailto:alizakirjustonline@gmail.com">alizakirjustonline@gmail.com</a><p class="contact-location mono">CHOFU-SHI, TOKYO, JAPAN</p></div></div>
+        <footer class="footer"><a class="brand" href="#profile" aria-label="Back to top"><span class="wordmark">az<span>.</span></span><span class="brand-name">Ali Zakir</span></a><span>© <span id="copyright-year">2026</span> Ali Zakir</span><div><a href="https://scholar.google.com/citations?user=HzQHveIAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Scholar ↗</a><a href="https://github.com/alizakiruec" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="#profile" aria-label="Back to top">Back to top ↑</a></div></footer>
+      </div></section>
+    </main>
+  </div>
+  <script>(() => {
+  'use strict';
+
+  // Retain the original site's local password gate and session behavior.
+  // This is a client-side presentation gate, not server-side authentication.
+  const PASSWORD = 'bluesky@now';
+  const gate = document.getElementById('pw-screen');
+  const passwordInput = document.getElementById('pw-input');
+  const passwordError = document.getElementById('pw-error');
+  const siteContent = document.getElementById('site-content');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let revealObserver;
+
+  function startReveals() {
+    if (reducedMotion.matches || !('IntersectionObserver' in window)) return;
+    const elements = [...document.querySelectorAll('.reveal')];
+    revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    elements.forEach(element => {
+      if (element.getBoundingClientRect().top > window.innerHeight) {
+        element.classList.add('is-pending');
+        revealObserver.observe(element);
+      }
+    });
+  }
+
+  function unlock(focusMain = true) {
+    gate.hidden = true;
+    siteContent.removeAttribute('inert');
+    siteContent.removeAttribute('aria-hidden');
+    document.body.classList.remove('is-locked');
+    passwordInput.value = '';
+    try { sessionStorage.setItem('unlocked', 'yes'); } catch (_) { /* Storage may be unavailable in local file previews. */ }
+    if (focusMain) {
+      const main = document.getElementById('main');
+      main.setAttribute('tabindex', '-1');
+      main.focus({ preventScroll: true });
+    }
+    startReveals();
+    updateScroll();
+  }
+
+  document.getElementById('password-form').addEventListener('submit', event => {
+    event.preventDefault();
+    if (passwordInput.value === PASSWORD) {
+      passwordInput.removeAttribute('aria-invalid');
+      passwordError.hidden = true;
+      unlock();
+    } else {
+      passwordError.hidden = false;
+      passwordInput.setAttribute('aria-invalid', 'true');
+      passwordInput.value = '';
+      passwordInput.focus();
+    }
+  });
+
+  // Keep keyboard focus inside the gate while the portfolio is locked.
+  gate.addEventListener('keydown', event => {
+    if (event.key !== 'Tab') return;
+    const submitButton = gate.querySelector('button');
+    if (event.shiftKey && document.activeElement === passwordInput) {
+      event.preventDefault(); submitButton.focus();
+    } else if (!event.shiftKey && document.activeElement === submitButton) {
+      event.preventDefault(); passwordInput.focus();
+    }
+  });
+
+  const filterButtons = [...document.querySelectorAll('.filter-btn')];
+  const publications = [...document.querySelectorAll('.pub-entry')];
+  const count = document.getElementById('publication-count');
+  function setPublicationFilter(filter) {
+    let visibleCount = 0;
+    publications.forEach(publication => {
+      const visible = filter === 'all' || publication.dataset.type === filter;
+      publication.hidden = !visible;
+      if (visible) visibleCount++;
+    });
+    filterButtons.forEach(button => {
+      const active = button.dataset.filter === filter;
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+    count.textContent = `${visibleCount} ${visibleCount === 1 ? 'entry' : 'entries'}`;
+    updateScroll();
+  }
+  filterButtons.forEach(button => button.addEventListener('click', () => setPublicationFilter(button.dataset.filter)));
+
+  const menuButton = document.getElementById('menu-button');
+  const navigation = document.getElementById('main-navigation');
+  function closeMenu(returnFocus = false) {
+    navigation.classList.remove('is-open');
+    menuButton.setAttribute('aria-expanded', 'false');
+    if (returnFocus) menuButton.focus();
+  }
+  menuButton.addEventListener('click', () => {
+    const open = menuButton.getAttribute('aria-expanded') !== 'true';
+    menuButton.setAttribute('aria-expanded', String(open));
+    navigation.classList.toggle('is-open', open);
+  });
+  navigation.querySelectorAll('a').forEach(link => link.addEventListener('click', () => closeMenu()));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') closeMenu(true);
+  });
+  document.addEventListener('click', event => {
+    if (!navigation.contains(event.target) && !menuButton.contains(event.target)) closeMenu();
+  });
+
+  const sectionLinks = [...navigation.querySelectorAll('a[href^="#"]')];
+  const sections = sectionLinks.map(link => document.querySelector(link.getAttribute('href')));
+  let scrollQueued = false;
+  function updateScroll() {
+    const root = document.documentElement;
+    const max = root.scrollHeight - root.clientHeight;
+    document.getElementById('reading-progress').style.transform = `scaleX(${max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0})`;
+    let activeId = '';
+    sections.forEach(section => {
+      if (section.getBoundingClientRect().top <= 165) activeId = section.id;
+    });
+    if (max > 0 && window.scrollY >= max - 4) activeId = 'contact';
+    sectionLinks.forEach(link => {
+      const active = link.getAttribute('href') === `#${activeId}`;
+      link.classList.toggle('active', active);
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+    scrollQueued = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!scrollQueued) { scrollQueued = true; requestAnimationFrame(updateScroll); }
+  }, { passive: true });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 650) closeMenu();
+    updateScroll();
+  }, { passive: true });
+  reducedMotion.addEventListener('change', event => {
+    if (event.matches) {
+      if (revealObserver) revealObserver.disconnect();
+      document.querySelectorAll('.is-pending').forEach(element => element.classList.add('is-visible'));
+    }
+  });
+
+  document.getElementById('copyright-year').textContent = new Date().getFullYear();
+  setPublicationFilter('all');
+  let alreadyUnlocked = false;
+  try { alreadyUnlocked = sessionStorage.getItem('unlocked') === 'yes'; } catch (_) { /* Unlock still works without browser storage. */ }
+  if (alreadyUnlocked) unlock(false);
+  else passwordInput.focus({ preventScroll: true });
+})();
+</script>
+</body>
+</html>
